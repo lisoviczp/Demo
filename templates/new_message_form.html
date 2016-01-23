@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% load swampdragon_tags %}
+
+
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+
+<body>
+
+{% block content %}
+
+{% block bodyblock %}
+
+
+<h1>New Message to {{ other_user }} </h1>
+
+<!-- new message form -->
+<div class="message_form">
+	<form id="notification" name="notification_form" method="post" onsubmit="SubForm()"> {% csrf_token %}
+	<!-- <form action="" id="notification" name="notification_form" method="post"> {% csrf_token %} -->
+		<li>
+			<div id="detail">To: </div><input name="user" value="{{other_user}}"> </br>
+			<label for="notification"> Message: </label>
+			<input type="text" name="notification" class="large-textbox">
+		</li>
+
+		<input id="notification_submit" type="submit" value="Send"/>
+		<p id="footerMessage"> </p>
+	</form>
+</div>
+
+
+<script>
+
+	// This usually works
+	function SubForm (){
+		alert("sending...");
+    	// event.preventDefault();
+        $.ajax({
+            url:'/home/send_message',
+            type:'post',
+            data:$('#notification').serialize(),
+            success:function(){
+                alert("worked");
+                window.location.href = "http://localhost:8000/home/";
+            }
+        });
+    }		
+</script>
+
+{% endblock %}
+
+{% endblock %}

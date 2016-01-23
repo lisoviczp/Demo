@@ -18,7 +18,7 @@
 {% block bodyblock %}
 
 
-<h1>Group Chat - All Messages </h1>
+<h1>All Messages </h1>
 
 <!-- new message form -->
 <div class="message_form">
@@ -39,7 +39,7 @@
             </select>
 		</li>
 
-		<input id="notification_submit" type="submit" value="Submit"/>
+		<input id="notification_submit" type="submit" value="Send"/>
 		<p id="footerMessage"> </p>
 	</form>
 </div>
@@ -82,8 +82,10 @@
 	<!-- This is our list of notifications -->
 	<ul id="notifications">
 	    {% for notification in object_list %}
-		    <li>{{ notification.message }}</li>
-		    <li>{{ notification.user }}</li>
+		    <li><div id="detail">From: </div>{{ notification.sending_user }}</li>
+		    <li><div id="detail">To: </div>{{ notification.user }}</li> </br>
+		    <li><div id="detail">Message: </div>{{ notification.message }}</li>
+
 		    <hr>
 	    {% endfor %}
 	</ul>

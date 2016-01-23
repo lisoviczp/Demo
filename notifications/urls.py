@@ -33,6 +33,7 @@ urlpatterns = patterns('',
 	url(r'^users/$', Users.as_view(), name='home'),
 	url(r'^demo/', include('demo.urls')),
 	url(r'^home/send_message$', views.send_message, name='send_message'),
+    url(r'^new_message/(?P<user_id>\d+)$', views.new_message_form, name='new_message_form'),
     url(r'^home/your_messages/$', views.your_messages, name='your_messages'),
 	url(r'^admin/', include(admin.site.urls)),
 )

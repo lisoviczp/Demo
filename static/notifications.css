@@ -24,3 +24,8 @@ h1 {
 .navbar.navbar {
 	border-bottom: 1px solid black;
 }
+
+#detail {
+	font-weight: bold;
+	display: inline;
+}

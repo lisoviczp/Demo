@@ -9,15 +9,16 @@
 	{% block bodyblock %}
 
 
-	<h1>Only Your Messages</h1>
+	<h1>Your Messages</h1>
 
 
 	<div class="recent-messages">
 		<!-- This is our list of notifications -->
 		<ul id="notifications">
-		    {% for notification in object_list %}
-			    <li>{{ notification.message }}</li>
-			    <li>{{ notification.user }}</li>
+		    {% for notification in your_messages %}
+			    <li><div id="detail">From: </div>{{ notification.sending_user }}</li>
+			    <li><div id="detail">To: </div>{{ notification.user }}</li> </br>
+			    <li><div id="detail">Message: </div>{{ notification.message }}</li>
 			    <hr>
 		    {% endfor %}
 		</ul>

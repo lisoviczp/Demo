@@ -21,7 +21,20 @@ def your_messages(request):
 	current_user=request.user
 	context=RequestContext(request)
 	context_dict = {}
+
+	your_messages = Notification.objects.filter(user=current_user)
+	context_dict['your_messages'] = your_messages
+
 	return render_to_response('your_messages.html', context_dict, context)
+
+def new_message_form(request,user_id):
+	current_user=request.user
+	context=RequestContext(request)
+	context_dict = {}
+
+	other_user = User.objects.get(id=user_id)
+	context_dict['other_user'] = other_user
+	return render_to_response('new_message_form.html', context_dict, context)
 
 
 def send_message(request):
