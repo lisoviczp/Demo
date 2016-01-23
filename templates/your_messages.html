@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% load swampdragon_tags %}
+
+
+{% block content %}
+
+	{% block bodyblock %}
+
+
+	<h1>Only Your Messages</h1>
+
+
+	<div class="recent-messages">
+		<!-- This is our list of notifications -->
+		<ul id="notifications">
+		    {% for notification in object_list %}
+			    <li>{{ notification.message }}</li>
+			    <li>{{ notification.user }}</li>
+			    <hr>
+		    {% endfor %}
+		</ul>
+	</div>
+
+
+
+	{% endblock %}
+
+{% endblock %}
+
+
+
+</body>
+</html>

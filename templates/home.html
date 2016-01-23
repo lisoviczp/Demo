@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% load swampdragon_tags %}
+
+
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+
+<body>
+
+{% block content %}
+
+{% block bodyblock %}
+
+
+<h1>Group Chat - All Messages </h1>
+
+<!-- new message form -->
+<div class="message_form">
+	<form id="notification" name="notification_form" method="post" onsubmit="SubForm()"> {% csrf_token %}
+	<!-- <form action="" id="notification" name="notification_form" method="post"> {% csrf_token %} -->
+		<li>
+			<label for="notification"> Message: </label>
+			<input type="text" name="notification" class="large-textbox">
+		</li>
+
+		<li>
+<!-- 			<label for="notification"> User: </label>
+			<input type="text" name="user" class="large-textbox"> -->
+            <select class="form-control" name="user">
+                <option name="phillipl" value="phillipl">phillipl</option>
+                <option name="mgaeta42" value="mgaeta42">mgaeta42</option>
+                <option name="jsalm" value="jsalm">jsalm</option>
+            </select>
+		</li>
+
+		<input id="notification_submit" type="submit" value="Submit"/>
+		<p id="footerMessage"> </p>
+	</form>
+</div>
+
+<script>
+	
+	// This usually works
+	function SubForm (){
+		alert("sending...");
+    	// event.preventDefault();
+        $.ajax({
+            url:'send_message',
+            type:'post',
+            data:$('#notification').serialize(),
+            success:function(){
+                alert("worked");
+                window.location.href = "http://localhost:8000/home/";
+            }
+        });
+    }		
+
+ 	// # prevent default?
+  //   $('#notification').on('submit', function(event){
+  //   	event.preventDefault();
+		// $.ajax({
+		// 	url:'send_message',
+		// 	type:'post',
+		// 	data:$('#notification').serialize(),
+		// 	success:function(){
+		// 	    alert("worked");
+		// 	}
+		// });
+  //   })
+
+
+</script>
+
+
+<div class="recent-messages">
+	<!-- This is our list of notifications -->
+	<ul id="notifications">
+	    {% for notification in object_list %}
+		    <li>{{ notification.message }}</li>
+		    <li>{{ notification.user }}</li>
+		    <hr>
+	    {% endfor %}
+	</ul>
+</div>
+
+
+
+{% endblock %}
+
+{% endblock %}
+
+
+
+</body>
+</html>

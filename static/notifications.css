@@ -1,0 +1,26 @@
+
+li {
+    list-style-type:none;
+}
+
+.recent-messages {
+	border: 1px solid gray;
+	width: 70%;
+	margin-left: 15%;
+	padding: 2em;
+}
+
+h1 {
+	text-align: center;
+}
+
+.message_form {
+	text-align: center;
+	width: 20%;
+    list-style:none;
+	margin-left: 40%;
+}
+
+.navbar.navbar {
+	border-bottom: 1px solid black;
+}

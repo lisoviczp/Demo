@@ -1,0 +1,3 @@
+51442:C 23 Jan 13:07:45.780 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+51442:M 23 Jan 13:07:45.782 * Increased maximum number of open files to 10032 (it was originally set to 256).
+51442:M 23 Jan 13:07:45.783 # Creating Server TCP listening socket *:6379: bind: Address already in use

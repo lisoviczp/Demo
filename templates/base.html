@@ -1,0 +1,77 @@
+{% load static %}
+{% load swampdragon_tags %}
+<head>
+
+<!-- Bootstrap and JQuery-->
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="{{ STATIC_URL }}notifications.css">
+
+<!-- Swamp dragon -->
+{% swampdragon_settings %}
+<!-- <script type="text/javascript" src="http://localhost:9999/settings.js"></script>
+This line will load various settings like end point address etc. from SwampDragon.
+Without it SD won't know where your server is as it might not reside on the same domain as your main website (I use sub domains like sd.swampdragon.net for the demos) -->
+
+<script type="text/javascript" src="{% static 'swampdragon/js/dist/swampdragon.min.js' %}"></script>
+
+<!-- SwampDragon -->
+<!-- <script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/vendor/sockjs-0.3.4.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/swampdragon.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/datamapper.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/swampdragon-vanilla.js"></script>
+<script type="text/javascript" src="http://localhost:9999/settings.js"></script> -->
+
+<script type="text/javascript" src="{% static 'swampdragon/js/vendor/sockjs-0.3.4.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'swampdragon/js/swampdragon.js' %}"></script>
+<script type="text/javascript" src="{% static 'swampdragon/js/datamapper.js' %}"></script>
+<script type="text/javascript" src="{% static 'swampdragon/js/swampdragon-vanilla.js' %}"></script>
+<!-- <script type="text/javascript" src="http://localhost:9999/settings.js %}"></script> -->
+
+<!-- notifications -->
+<script type="text/javascript" src="{{ STATIC_URL }}notifications.js"></script>
+
+
+</head>
+
+
+
+ <!-- Fixed navbar -->
+<div class="navbar navbar" role="navigation">
+	  <div class="container">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="/home/">home</a>
+	      <a class="navbar-brand" href="/users/">users</a>
+	      <a class="navbar-brand" href="/home/your_messages/">inbox</a>
+	    </div>
+	    <div class="navbar-collapse collapse">
+	      <ul class="nav navbar-nav pull-right">
+	          {% if user and not user.is_anonymous %}
+	          <li class="navbar-text">Welcome, {{ user }}!</li>
+	          {% endif %}
+	      </ul>
+	  </div>
+	</div>
+</div>
+
+
+{% block content %}
+
+{% block bodyblock %}
+{% endblock %}
+
+{% endblock %}
+
+
+

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ STATIC_URL }}notifications.css">
+
+	{% block bodyblock %}
+
+
+	<h1>Listing Users</h1>
+
+	<div class="recent-messages">
+		<!-- This is our list of notifications -->
+		<ul id="notifications">
+		    {% for each_user in object_list %}
+			    <li>{{ each_user.username }}</li>
+			    <hr>
+		    {% endfor %}
+		</ul>
+	</div>
+
+	{% endblock %}
+
+
+{% endblock %}
