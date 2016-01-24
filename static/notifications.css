@@ -16,9 +16,9 @@ h1 {
 
 .message_form {
 	text-align: center;
-	width: 20%;
+	width: 30%;
     list-style:none;
-	margin-left: 40%;
+	margin-left: 35%;
 }
 
 .navbar.navbar {
@@ -28,4 +28,15 @@ h1 {
 #detail {
 	font-weight: bold;
 	display: inline;
+}
+
+.large-textbox {
+	width: 30em;
+	height:5em;
+	padding:2px;
+}
+
+#alternate_color { 
+	background-color: lightblue;
+	padding: 2em;
 }

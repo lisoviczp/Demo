@@ -12,8 +12,8 @@
 		<!-- This is our list of notifications -->
 		<ul id="notifications">
 		    {% for each_user in object_list %}
-		    	<li><a href="/new_message/{{ each_user.id }} " class="fancybox">Send Message</a></li>
-			    <li>{{ each_user.username }}</li>
+		    	<li><a href="/new_message/{{ each_user.id }} " class="fancybox">{{ each_user.username }}</a></li>
+		    	<li> {{ each_user.email }} </li>
 			    <hr>
 		    {% endfor %}
 		</ul>

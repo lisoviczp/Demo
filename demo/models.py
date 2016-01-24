@@ -27,10 +27,12 @@ class Notification(SelfPublishModel, models.Model):
     # user = models.ForeignKey(User, on_delete=models.CASCADE,default=DEFAULT_USER_ID, unique=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='receiving_user')
     sending_user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='sending_user', default = DEFAULT_USER_ID)
+    created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
     	return_message = "Message: " + str(self.message) + "\n" 
-    	return_message += "User: " + str(self.user) + "\n" or ''
+        return_message += "Receiving User: " + str(self.user) + "\n" or ''
+    	return_message += "Sending User: " + str(self.sending_user) + "\n" or ''
     	return return_message
     	# return "Message: " + str(self.message) + "\n" 
 

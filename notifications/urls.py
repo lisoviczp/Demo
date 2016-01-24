@@ -29,6 +29,7 @@ from demo.views import Users
 admin.autodiscover()
 
 urlpatterns = patterns('',
+    url(r'^$', Notifications.as_view(), name='home'),
     url(r'^home/$', Notifications.as_view(), name='home'),
 	url(r'^users/$', Users.as_view(), name='home'),
 	url(r'^demo/', include('demo.urls')),

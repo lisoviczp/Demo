@@ -35,20 +35,43 @@
 	</form>
 </div>
 
+<div class="recent-messages">
+	<!-- This is our list of notifications -->
+	<ul id="notifications">
+	    {% for notification in relevant_messages %}
+
+	    	<!-- For better readability, we'll highlight messages sent to the current user -->
+	    	{% if notification.sending_user == other_user %}
+	    	<div id="alternate_color">
+	    	{% endif %}
+			    <li><div id="detail">From: </div>{{ notification.sending_user }}</li>
+			    <li><div id="detail">To: </div>{{ notification.user }}</li> 
+			    <li>at {{ notification.created }}</li></br>
+			    <li><div id="detail">Message: </div>{{ notification.message }}</li>
+
+	    	<!-- Closing the alternate_color div -->
+	    	{% if notification.sending_user == other_user %}
+		    </div>
+		    {% endif %}
+
+		    <hr>
+	    {% endfor %}
+	</ul>
+</div>
 
 <script>
 
-	// This usually works
+	// This Works
 	function SubForm (){
-		alert("sending...");
+		// alert("Sending...");
     	// event.preventDefault();
         $.ajax({
             url:'/home/send_message',
             type:'post',
             data:$('#notification').serialize(),
             success:function(){
-                alert("worked");
-                window.location.href = "http://localhost:8000/home/";
+                // alert("Success!");
+                // window.location.href = "http://localhost:8000/home/";
             }
         });
     }		
