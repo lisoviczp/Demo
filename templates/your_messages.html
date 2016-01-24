@@ -16,9 +16,25 @@
 		<!-- This is our list of notifications -->
 		<ul id="notifications">
 		    {% for notification in your_messages %}
-			    <li><div id="detail">From: </div>{{ notification.sending_user }}</li>
-			    <li><div id="detail">To: </div>{{ notification.user }}</li> </br>
-			    <li><div id="detail">Message: </div>{{ notification.message }}</li>
+
+		    	{% if notification.user == user %}
+		    	<div id="alternate_color">
+		    	{% endif %}
+
+				    <li><div id="detail">From:  </div>
+				    	<a href="/new_message/{{ notification.sending_user.id }}">{{ notification.sending_user }} </a> 
+				    </li>
+				    <li> <div id="detail">To: </div>
+				    	<a href="/new_message/{{ notification.user.id }}">{{ notification.user }} </a>
+				    </li> </br>
+				    <li><div id="detail">Message: </div>{{ notification.message }}</li>
+
+
+		    	{% if notification.user == user %}
+		    	</div>
+		    	{% endif %}
+
+
 			    <hr>
 		    {% endfor %}
 		</ul>

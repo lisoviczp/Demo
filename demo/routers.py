@@ -4,6 +4,7 @@ from .models import Notification
 from .serializers import NotificationSerializer
 
 
+# Using SwampDragon routers to deal with the data we're passing
 class NotificationRouter(ModelPubRouter):
     valid_verbs = ['subscribe']
     route_name = 'notifications'

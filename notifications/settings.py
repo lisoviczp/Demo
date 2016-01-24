@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import psycopg2
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -27,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+DEV_ENV = True
+# DEV_ENV = False
 
 # Application definition
 
@@ -76,12 +79,20 @@ WSGI_APPLICATION = 'notifications.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if DEV_ENV:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.path.join(BASE_DIR, 'db.postgresql'),
+        }
+    }
 
 
 # Internationalization
@@ -123,16 +134,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-# THIS IS WORKING, AS IS.. somehow it wasn't working before..
+# THIS IS WORKING, AS IS
 TEMPLATE_DIRS = [
     os.path.join(BASE_DIR, 'templates')
 ]
-
-# SETTINGS_PATH = os.path.dirname(__file__)
-# PROJECT_PATH = os.path.join(SETTINGS_PATH, os.pardir)
-# PROJECT_PATH = os.path.abspath(PROJECT_PATH)
-# # TEMPLATES_PATH = os.path.join(PROJECT_PATH, "templates")
-# TEMPLATES_PATH = '/Users/philliplisovicz/Django_Sites/notifications/templates/'
 
 # TEMPLATE_DIRS = (
 #     TEMPLATES_PATH,

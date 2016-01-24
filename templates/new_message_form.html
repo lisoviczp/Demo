@@ -18,7 +18,12 @@
 {% block bodyblock %}
 
 
-<h1>New Message to {{ other_user }} </h1>
+{% if user == other_user %}
+	<h1>New Message to Yourself!</h1>
+{% else %}
+	<h1>New Message to {{ other_user }} </h1>
+{% endif %}
+
 
 <!-- new message form -->
 <div class="message_form">

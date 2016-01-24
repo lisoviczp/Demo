@@ -5,32 +5,13 @@
 <!-- Bootstrap and JQuery-->
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script src="fancybox/jquery.fancybox-1.3.4.pack.js"></script>
 
-<!-- fancybox shit -->
+<!-- Notifications JavaScript and CSS file-->
+<script type="text/javascript" src="{{ STATIC_URL }}notifications.js"></script>
+<link rel="stylesheet" href="{{ STATIC_URL }}notifications.css">
 
-<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js" crossorigin="anonymous"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" crossorigin="anonymous"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/blank.gif"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/blank.gif"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/fancybox_loading@2x.gif"></script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/fancybox_overlay.png"></script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/fancybox_sprite.png"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/fancybox_sprite@2x.png"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/fancybox_buttons.png"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/jquery.fancybox-buttons.css"></script>
-<script stype="text/javascript" rc="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/jquery.fancybox-buttons.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/jquery.fancybox-media.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/jquery.fancybox-thumbs.css"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/jquery.fancybox-thumbs.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.css"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
- -->
-
+<!-- BootStrap -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -40,31 +21,27 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-<link rel="stylesheet" href="{{ STATIC_URL }}notifications.css">
-
-<!-- Swamp dragon -->
-{% swampdragon_settings %}
-<!-- <script type="text/javascript" src="http://localhost:9999/settings.js"></script>
-This line will load various settings like end point address etc. from SwampDragon.
-Without it SD won't know where your server is as it might not reside on the same domain as your main website (I use sub domains like sd.swampdragon.net for the demos) -->
-
-<script type="text/javascript" src="{% static 'swampdragon/js/dist/swampdragon.min.js' %}"></script>
 
 <!-- SwampDragon -->
-<!-- <script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/vendor/sockjs-0.3.4.min.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/swampdragon.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/datamapper.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/swampdragon-vanilla.js"></script>
-<script type="text/javascript" src="http://localhost:9999/settings.js"></script> -->
 
+{% swampdragon_settings %}
+<script type="text/javascript" src="http://localhost:9999/settings.js"></script>
+<!-- This line will load various settings like end point address etc. from SwampDragon.
+Without it SD won't know where your server is as it might not reside on the same domain as your main website (I use sub domains like sd.swampdragon.net for the demos) -->
+
+<!-- 
+<script type="text/javascript" src="{% static 'swampdragon/js/dist/swampdragon.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'swampdragon/js/vendor/sockjs-0.3.4.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'swampdragon/js/swampdragon.js' %}"></script>
 <script type="text/javascript" src="{% static 'swampdragon/js/datamapper.js' %}"></script>
-<script type="text/javascript" src="{% static 'swampdragon/js/swampdragon-vanilla.js' %}"></script>
-<!-- <script type="text/javascript" src="http://localhost:9999/settings.js %}"></script> -->
+<script type="text/javascript" src="{% static 'swampdragon/js/swampdragon-vanilla.js' %}"></script> -->
 
-<!-- notifications -->
-<script type="text/javascript" src="{{ STATIC_URL }}notifications.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/vendor/sockjs-0.3.4.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/swampdragon.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/datamapper.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/swampdragon-vanilla.js"></script>
+<!-- <script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/dist/swampdragon.min.js"></script> -->
+
 
 
 </head>
@@ -75,45 +52,26 @@ Without it SD won't know where your server is as it might not reside on the same
 <div class="navbar navbar" role="navigation">
 	  <div class="container">
 	    <div class="navbar-header">
-	      <a class="navbar-brand" href="/home/">home</a>
-	      <a class="navbar-brand" href="/users/">users</a>
-	      <a class="navbar-brand" href="/home/your_messages/">inbox</a>
+	      <a class="navbar-brand" href="/home/">Home</a>
+	      <a class="navbar-brand" href="/users/">Users</a>
+	      <a class="navbar-brand" href="/home/your_messages/">Inbox</a>
 	    </div>
 	    <div class="navbar-collapse collapse">
 	      <ul class="nav navbar-nav pull-right">
 	          {% if user and not user.is_anonymous %}
-	          <li class="navbar-text">Welcome, {{ user }}!</li>
+	          <li class="navbar-brand">Welcome, {{ user }}!</li>
 	          {% endif %}
 	      </ul>
 	  </div>
 	</div>
 </div>
 
-<script>
-
-
-	// This usually works
-	function SubForm (){
-		alert("sending...");
-    	// event.preventDefault();
-        $.ajax({
-            url:'send_message',
-            type:'post',
-            data:$('#notification').serialize(),
-            success:function(){
-                alert("worked");
-                window.location.href = "http://localhost:8000/home/";
-            }
-        });
-    }		
-
-
-</script>
 
 {% block content %}
 
-{% block bodyblock %}
-{% endblock %}
+	{% block bodyblock %}
+
+	{% endblock %}
 
 {% endblock %}
 
