@@ -43,8 +43,7 @@ def new_message_form(request,user_id):
 	# Getting the recipient and current user
 	current_user=request.user
 	other_user = User.objects.get(id=user_id)
-	print(other_user)
-	print(current_user)
+
 	context=RequestContext(request)
 	context_dict = {}
 

@@ -15,86 +15,74 @@
 
 {% block content %}
 
-{% block bodyblock %}
+	{% block bodyblock %}
 
 
-<h1>All Messages </h1>
+	<h1>All Messages </h1>
 
-<!-- new message form -->
-<div class="message_form" style="display:none;">
-	<form id="notification" name="notification_form" method="post" onsubmit="SubForm()"> {% csrf_token %}
-	<!-- <form action="" id="notification" name="notification_form" method="post"> {% csrf_token %} -->
-		<li>
-			<label for="notification"> New Message: </label>
-			<input type="text" name="notification" class="large-textbox">
-		</li>
+	<script>
+	    // ouput http://localhost:9999 assuming you are running your server on that url
+	    // ensure swampdragon is properly configured
+	    console.log(window.swampdragon_host); 
+	</script>
 
-		<li>
-            <div id="detail">To: <select class="form-control" name="user"> 
-            	{% for user in users %}
-                <option name="phillipl" value="phillipl">phillipl</option>
-                <option name="mgaeta42" value="mgaeta42">mgaeta42</option>
-                <option name="jsalm" value="jsalm">jsalm</option>
-                {% endfor %}
-            </select>
-            </div>
-		</li>
+	<!-- new message form -->
+	<div class="message_form" style="display:none;">
+		<form id="notification" name="notification_form" method="post" onsubmit="SubForm()"> {% csrf_token %}
+		<!-- <form action="" id="notification" name="notification_form" method="post"> {% csrf_token %} -->
+			<li>
+				<label for="notification"> New Message: </label>
+				<input type="text" name="notification" class="large-textbox">
+			</li>
 
-		<input id="notification_submit" type="submit" value="Send"/>
-		<p id="footerMessage"> </p>
-	</form>
-</div>
+			<li>
+	            <div id="detail">To: <select class="form-control" name="user"> 
+	            	{% for user in users %}
+	                <option name="phillipl" value="phillipl">phillipl</option>
+	                <option name="mgaeta42" value="mgaeta42">mgaeta42</option>
+	                <option name="jsalm" value="jsalm">jsalm</option>
+	                {% endfor %}
+	            </select>
+	            </div>
+			</li>
 
-<script>
-	
-	// This works
-	function SubForm (){
-		alert("Sending...");
-    	// event.preventDefault();
-        $.ajax({
-            url:'send_message',
-            type:'post',
-            data:$('#notification').serialize(),
-            success:function(){
-                // alert("Success!");
-            }
-        });
-    }		
-
-</script>
+			<input id="notification_submit" type="submit" value="Send"/>
+			<p id="footerMessage"> </p>
+		</form>
+	</div>
 
 
-<div class="recent-messages">
-	<!-- This is our list of notifications -->
-	<ul id="notifications">
-	    {% for notification in object_list %}
+	<div class="recent-messages">
+		<!-- This is our list of notifications -->
+		<ul id="notifications">
+		    {% for notification in object_list %}
 
-	    	<!-- For better readability, we'll highlight messages sent to the current user -->
-			{% if user and notification.user == user %}
-		    <div id="alternate_color">
-		    {% endif %}
-			    <li><div id="detail">From: </div>
-			    	<a href="/new_message/{{ notification.sending_user.id }}"> {{ notification.sending_user }}</a>
-			    </li>
-			    <li><div id="detail">To: </div>
-			    	<a href="/new_message/{{ notification.user.id }}"> {{ notification.user }}</a>
-			    </li>
-			    <li>at {{ notification.created }}</li></br>
-			    <li><div id="detail">Message: </div>{{ notification.message }}</li>
+		    	<!-- For better readability, we'll highlight messages sent to the current user -->
+				{% if user and notification.user == user %}
+			    <div id="alternate_color">
+			    {% endif %}
+				    <li><div id="detail">From: </div>
+				    	<a href="/new_message/{{ notification.sending_user.id }}"> {{ notification.sending_user }}</a>
+				    </li>
+				    <li><div id="detail">To: </div>
+				    	<a href="/new_message/{{ notification.user.id }}"> {{ notification.user }}</a>
+				    </li>
+				    <li>at {{ notification.created }}</li></br>
+				    <li><div id="detail">Message: </div>{{ notification.message }}</li>
 
-	    	<!-- Closing the alternate_color div -->
-    		{% if user and notification.user == user %}
-			</div>
-			{% endif %}
+		    	<!-- Closing the alternate_color div -->
+	    		{% if user and notification.user == user %}
+				</div>
+				{% endif %}
 
-		    <hr>
-	    {% endfor %}
-	</ul>
-</div>
+			    <hr>
+		    {% endfor %}
+		</ul>
+	</div>
 
 
 
-{% endblock %}
+	{% endblock %}
 
 {% endblock %}
 

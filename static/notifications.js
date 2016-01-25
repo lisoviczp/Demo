@@ -14,7 +14,9 @@ window.addEventListener('load', function () {
 
 // Create an instance of vanilla dragon
 // var dragon = new VanillaDragon({onopen: onOpen, onchannelmessage: onChannelMessage});
-// swampdragon.open({onopen: onOpen, onchannelmessage: onChannelMessage});
+swampdragon.open({onopen: onOpen, onchannelmessage: onChannelMessage});
+
+// alert(swampdragon);
 
 // This is the list of notifications
 var notificationsList = document.getElementById("notifications");
@@ -46,6 +48,9 @@ function addNotification(notification) {
     var li = document.createElement("li");
     notificationsList.insertBefore(li, notificationsList.firstChild);
     li.innerHTML = notification.message;
+
+    // Alert the notification
+    alert(notification.message);
 
     // Remove excess notifications
     while (notificationsList.getElementsByTagName("li").length > 5) {

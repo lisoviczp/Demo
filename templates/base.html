@@ -7,7 +7,6 @@
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
 <!-- Notifications JavaScript and CSS file-->
-<script type="text/javascript" src="{{ STATIC_URL }}notifications.js"></script>
 <link rel="stylesheet" href="{{ STATIC_URL }}notifications.css">
 
 
@@ -23,25 +22,18 @@
 
 
 <!-- SwampDragon -->
-
 {% swampdragon_settings %}
+<script type="text/javascript" src="{{ STATIC_URL }}sockjs-0.3.4.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}swampdragon.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}swampdragon.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}datamapper.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}swampdragon-vanilla.js"></script>
+
 <script type="text/javascript" src="http://localhost:9999/settings.js"></script>
 <!-- This line will load various settings like end point address etc. from SwampDragon.
-Without it SD won't know where your server is as it might not reside on the same domain as your main website (I use sub domains like sd.swampdragon.net for the demos) -->
+Without it SD won't know where your server is as it might not reside on the same domain as the main website -->
 
-<!-- 
-<script type="text/javascript" src="{% static 'swampdragon/js/dist/swampdragon.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'swampdragon/js/vendor/sockjs-0.3.4.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'swampdragon/js/swampdragon.js' %}"></script>
-<script type="text/javascript" src="{% static 'swampdragon/js/datamapper.js' %}"></script>
-<script type="text/javascript" src="{% static 'swampdragon/js/swampdragon-vanilla.js' %}"></script> -->
-
-<script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/vendor/sockjs-0.3.4.min.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/swampdragon.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/datamapper.js"></script>
-<script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/swampdragon-vanilla.js"></script>
-<!-- <script type="text/javascript" src="{{ STATIC_URL }}swampdragon/js/dist/swampdragon.min.js"></script> -->
-
+<script type="text/javascript" src="{{ STATIC_URL }}notifications.js"></script>
 
 
 </head>
