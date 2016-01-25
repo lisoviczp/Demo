@@ -1,1 +1,1 @@
-Demo
+Simple Message Center application.
