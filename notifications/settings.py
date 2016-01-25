@@ -79,6 +79,7 @@ WSGI_APPLICATION = 'notifications.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
+# If not in a Dev environment, set the DB to use PostgreSQL as it is better for scalability
 if DEV_ENV:
     DATABASES = {
         'default': {
@@ -100,7 +101,7 @@ else:
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/New_York'
 
 USE_I18N = True
 

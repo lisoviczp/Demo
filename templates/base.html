@@ -60,6 +60,8 @@ Without it SD won't know where your server is as it might not reside on the same
 	      <ul class="nav navbar-nav pull-right">
 	          {% if user and not user.is_anonymous %}
 	          <li class="navbar-brand">Welcome, {{ user }}!</li>
+	          {% else %}
+	          	<a class="navbar-brand" href="/admin">Admin Login</a>
 	          {% endif %}
 	      </ul>
 	  </div>

@@ -3,7 +3,7 @@ li {
     list-style-type:none;
 }
 
-.recent-messages {
+.recent-messages, .list-users {
 	border: 1px solid gray;
 	width: 70%;
 	margin-left: 15%;

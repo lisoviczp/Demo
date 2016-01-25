@@ -5,11 +5,10 @@
 
 	{% block bodyblock %}
 
+	<h1>Users</h1>
+	<div class="list-users">
 
-	<h1>Listing Users</h1>
-
-	<div class="recent-messages">
-		<!-- This is our list of notifications -->
+		<!-- This is our list of users -->
 		<ul id="notifications">
 		    {% for each_user in object_list %}
 		    	<li><a href="/new_message/{{ each_user.id }} " class="fancybox">{{ each_user.username }}</a></li>
@@ -19,14 +18,5 @@
 		</ul>
 	</div>
 
-
-		
-	<div class="container" id="test" style="display: none;">
-		<h1>hey</h1>
-
-	</div>
-
 	{% endblock %}
-
-
 {% endblock %}

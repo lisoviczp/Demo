@@ -12,13 +12,6 @@ Class-based views
 Including another URLconf
     1. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """ 
-# orig
-# from django.conf.urls import include, url
-# from django.contrib import admin
-
-# urlpatterns = [
-#     url(r'^admin/', include(admin.site.urls)),
-# ]
 
 from demo import views
 from django.conf.urls import patterns, include, url
@@ -28,6 +21,7 @@ from demo.views import Users
 
 admin.autodiscover()
 
+# Defining URLS
 urlpatterns = patterns('',
     url(r'^$', Notifications.as_view(), name='home'),
     url(r'^home/$', Notifications.as_view(), name='home'),

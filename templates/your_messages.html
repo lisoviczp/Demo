@@ -17,6 +17,7 @@
 		<ul id="notifications">
 		    {% for notification in your_messages %}
 
+		    	<!-- For readability, highlighting messages where recipient is the current user -->
 		    	{% if notification.user == user %}
 		    	<div id="alternate_color">
 		    	{% endif %}
@@ -26,10 +27,11 @@
 				    </li>
 				    <li> <div id="detail">To: </div>
 				    	<a href="/new_message/{{ notification.user.id }}">{{ notification.user }} </a>
-				    </li> </br>
+				    </li> 
+				    <li>at {{ notification.created }}</li></br>
 				    <li><div id="detail">Message: </div>{{ notification.message }}</li>
 
-
+				 <!-- Closing out this readability div -->
 		    	{% if notification.user == user %}
 		    	</div>
 		    	{% endif %}
@@ -39,7 +41,6 @@
 		    {% endfor %}
 		</ul>
 	</div>
-
 
 
 	{% endblock %}

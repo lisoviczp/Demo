@@ -15,73 +15,72 @@
 
 {% block content %}
 
-{% block bodyblock %}
+	{% block bodyblock %}
 
 
-{% if user == other_user %}
-	<h1>New Message to Yourself!</h1>
-{% else %}
-	<h1>New Message to {{ other_user }} </h1>
-{% endif %}
+	{% if user == other_user %}
+		<h1>New Message to Yourself!</h1>
+	{% else %}
+		<h1>New Message to {{ other_user }} </h1>
+	{% endif %}
 
 
-<!-- new message form -->
-<div class="message_form">
-	<form id="notification" name="notification_form" method="post" onsubmit="SubForm()"> {% csrf_token %}
-	<!-- <form action="" id="notification" name="notification_form" method="post"> {% csrf_token %} -->
-		<li>
-			<div id="detail">To: </div><input name="user" value="{{other_user}}"> </br>
-			<label for="notification"> Message: </label>
-			<input type="text" name="notification" class="large-textbox">
-		</li>
+	<!-- new message form -->
+	<div class="message_form">
+		<form id="notification" name="notification_form" method="post" onsubmit="SubForm()"> {% csrf_token %}
+		<!-- <form action="" id="notification" name="notification_form" method="post"> {% csrf_token %} -->
+			<li>
+				<div id="detail">To: </div><input name="user" value="{{other_user}}"> </br>
+				<label for="notification"> Message: </label>
+				<input type="text" name="notification" class="large-textbox">
+			</li>
 
-		<input id="notification_submit" type="submit" value="Send"/>
-		<p id="footerMessage"> </p>
-	</form>
-</div>
+			<input id="notification_submit" type="submit" value="Send"/>
+			<p id="footerMessage"> </p>
+		</form>
+	</div>
 
-<div class="recent-messages">
-	<!-- This is our list of notifications -->
-	<ul id="notifications">
-	    {% for notification in relevant_messages %}
+	<div class="recent-messages">
+		<!-- This is our list of notifications -->
+		<ul id="notifications">
+		    {% for notification in relevant_messages %}
 
-	    	<!-- For better readability, we'll highlight messages sent to the current user -->
-	    	{% if notification.sending_user == other_user %}
-	    	<div id="alternate_color">
-	    	{% endif %}
-			    <li><div id="detail">From: </div>{{ notification.sending_user }}</li>
-			    <li><div id="detail">To: </div>{{ notification.user }}</li> 
-			    <li>at {{ notification.created }}</li></br>
-			    <li><div id="detail">Message: </div>{{ notification.message }}</li>
+		    	<!-- For better readability, we'll highlight messages sent to the current user -->
+		    	{% if notification.sending_user == other_user %}
+		    	<div id="alternate_color">
+		    	{% endif %}
+				    <li><div id="detail">From: </div>{{ notification.sending_user }}</li>
+				    <li><div id="detail">To: </div>{{ notification.user }}</li> 
+				    <li>at {{ notification.created }}</li></br>
+				    <li><div id="detail">Message: </div>{{ notification.message }}</li>
 
-	    	<!-- Closing the alternate_color div -->
-	    	{% if notification.sending_user == other_user %}
-		    </div>
-		    {% endif %}
+		    	<!-- Closing the alternate_color div -->
+		    	{% if notification.sending_user == other_user %}
+			    </div>
+			    {% endif %}
 
-		    <hr>
-	    {% endfor %}
-	</ul>
-</div>
+			    <hr>
+		    {% endfor %}
+		</ul>
+	</div>
 
-<script>
+	<script>
 
-	// This Works
-	function SubForm (){
-		// alert("Sending...");
-    	// event.preventDefault();
-        $.ajax({
-            url:'/home/send_message',
-            type:'post',
-            data:$('#notification').serialize(),
-            success:function(){
-                // alert("Success!");
-                // window.location.href = "http://localhost:8000/home/";
-            }
-        });
-    }		
-</script>
+		function SubForm (){
+			// alert("Sending...");
+	    	// event.preventDefault();
+	        $.ajax({
+	            url:'/home/send_message',
+	            type:'post',
+	            data:$('#notification').serialize(),
+	            success:function(){
+	                // alert("Success!");
+	                // window.location.href = "http://localhost:8000/home/";
+	            }
+	        });
+	    }		
+	</script>
 
-{% endblock %}
+	{% endblock %}
 
 {% endblock %}
